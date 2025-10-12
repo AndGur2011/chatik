@@ -1,19 +1,34 @@
 from customtkinter import *
 from PIL import Image
-window = CTk() #создание окна
-window.title("Чатик 1.1") #изменение названия
-window.geometry("1080x500") #изменение размера
-window.configure(fg_color ="purple") #изменение цвета заднего фона .configure может изменять все и как угодно
-frame = CTkFrame(window,fg_color="white",width = 500, height= 400)
-frame.place(x =0,y = 0)
-enter_text = "Введіть текст"
-enter = CTkEntry(window,width=410,height=90,placeholder_text=enter_text)
-enter.place(x = 0, y = 400)
-btn = CTkButton(window, width=90,height=90,hover_color="red", font = ("Arial", 30 , "bold") ) #создание кнопки
-btn.place(x = 400,y=400)
-picture_ctk = Image.open("pixil-frame-0.png")
-picture_ctk = CTkImage(light_image=picture_ctk,size = (100,100))
-btn.configure(image = picture_ctk,compound = "right",text = "Send" )
+
+window = CTk()
+window.title("Чатик 1.5")
+window.geometry("1080x500")
+
+bg_image = Image.open("background.jfif")
+bg_image = bg_image.resize((1080, 500))
+bg_photo = CTkImage(light_image=bg_image, size=(1080, 500))
+
+bg_label = CTkLabel(window, text="", image=bg_photo)
+bg_label.place(x=0, y=0, relwidth=1, relheight=1)
+
+chat_frame = CTkFrame(window, fg_color="#00716a", corner_radius=15, width=700, height=350)
+chat_frame.place(x=190, y=40)
+
+enter = CTkEntry(window, width=850, height=50, placeholder_text="Введіть текст...", corner_radius=10, font=("Arial", 16))
+enter.place(x=100, y=420)
+
+#send_icon = Image.open("pixil-frame-0.png")
+#send_icon = CTkImage(light_image=send_icon, size=(40, 40))
+
+btn = CTkButton(window, text="Send", #image=send_icon,
+                 compound="left",
+                font=("Arial", 20, "bold"), width=120, height=50,
+                fg_color="#6A0DAD", hover_color="#9b30ff", corner_radius=10)
+btn.place(x=960, y=420)
+
+window.mainloop()
+
 
 
 
